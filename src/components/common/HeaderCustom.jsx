@@ -6,8 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 import '../../style/header.less';
-import Volkswagen from '../../statistics/大众.jpg';
-import Skoda from '../../statistics/斯柯达.jpg';
+import logo from '../../statistics/logo.png';
 import { nowTime } from '../../publicFunction/index';
 import { setCookie } from "../../helpers/cookies";
 
@@ -66,9 +65,8 @@ class HeaderCustom extends Component{
       );
 
       return(
-        <Header className="header-style">
-          <img alt="大众" src={Volkswagen}/>
-          <img alt="斯柯达" src={Skoda}/>
+        <Header className="header-style header">
+          <img alt="logo" src={logo}/>
           <span>
             <Link to="/technology-system">325 实验室基础前端框架</Link>
           </span>

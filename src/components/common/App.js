@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import { getCookie, setCookie } from "../../helpers/cookies";
 import store from '../../store';
 import { Provider } from 'react-redux';
 
-import HeaderMenu from './HeaderMenu'
+import SideMenu from './SideMenu'
 import HeaderCustom from './HeaderCustom';
 import Index from '../index/index';
 import noMatch from './404';
 
 import '../../style/index.less';
 
-const { Content, Footer } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 class App extends Component {
   state = {
@@ -44,24 +44,35 @@ class App extends Component {
     }
 
     return (
-      <Layout className="ant-layout-has-sider">
+      <Layout>
         <Provider store={store}>
-          <Layout style={{ minHeight: "calc(100vh)", overflowX: 'auto' }}>
-            <HeaderCustom collapsed={collapsed} toggle={this.toggle} username={name} />
-            <Content style={{ width: '80%', minWidth: 1080, margin: "3rem auto 0", backgroundColor: '#fff' }}>
-              <HeaderMenu />
-              <Switch>
-                <Route exact path={'/app'} component={Index} />
-                <Route component={noMatch} />
-              </Switch>
-            </Content>
+          <HeaderCustom collapsed={collapsed} toggle={this.toggle} username={name} />
 
-            <Footer style={{ textAlign: 'center', backgroundColor: "#778899", color: "white" }}>
-              <span style={{ display: "block" }}>公司地址：上海市杨浦区军工路516号上海理工大学</span>
-              <span style={{ display: "block" }}>联系电话：12345</span>
-              <span style={{ display: "block" }}>邮箱：12345@qq.com</span>
-            </Footer>
-          </Layout>
+          <Content>
+            {/*<HeaderMenu />*/}
+            <Layout style={{ padding: '0 0', background: '#fff' }}>
+              <Sider width={200} style={{ background: '#fff' }}>
+                <SideMenu />
+              </Sider>
+              <Breadcrumb style={{ margin: '3.4rem 2rem 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+              <Content style={{ padding: '0 24px', minHeight: 'calc(100vh - 111px)' }}>
+                <Switch>
+                  <Route exact path={'/app'} component={Index} />
+                  <Route component={noMatch} />
+                </Switch>
+              </Content>
+            </Layout>
+          </Content>
+
+          <Footer style={{ textAlign: 'center', backgroundColor: "#778899", color: "white" }}>
+            <span style={{ display: "block" }}>公司地址：上海市杨浦区军工路516号上海理工大学</span>
+            <span style={{ display: "block" }}>联系电话：12345</span>
+            <span style={{ display: "block" }}>邮箱：12345@qq.com</span>
+          </Footer>
         </Provider>
       </Layout>
     )
