@@ -1,0 +1,131 @@
+.weldingParamsView {
+  @marginLeft: 6%;
+  width: 100%;
+  min-height: 300px;
+  .leftOfWeldingParamsView {
+    float: left;
+    //background-color: red;
+    height: calc(~'100vh - 207px - 3.2rem');
+    overflow-y: auto;
+    border-right: 2px solid rgba(0, 0, 0, .1);
+    #components-back-top-demo-custom .ant-back-top {
+      bottom: 100px;
+    }
+    #components-back-top-demo-custom .ant-back-top-inner {
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      background-color: #1088e9;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+  // 隐藏滚动栏，但不影响使用
+  .leftOfWeldingParamsView::-webkit-scrollbar{
+    display: none;
+  }
+  .rightOfWeldingParamsView {
+    float: right;
+    width: calc(~'100% - 259px');
+    min-height: 100px;
+    .workshopTitle {
+      margin-left: @marginLeft;
+      font-size: 1rem;
+      font-weight: 900;
+      margin-bottom: .4rem;
+      .workshopTitleItem {
+        display: inline-block;
+        padding-right: 1rem;
+        min-width: 6rem;
+      }
+    }
+    .searchBlock {
+      width: 84%;
+      margin-left: @marginLeft;
+      border-radius: 12px;
+      background-color: rgba(211, 211, 211, .3);
+      padding-top: .4rem;
+      padding-bottom: .4rem;
+      .searchRow {
+        width: 90%;
+        margin: 4px auto 4px;
+        .searchItem {
+          display: inline-block;
+          width: 24%;
+          margin-right: 1rem;
+          span {
+            font-size: .9rem;
+            font-weight: 700;
+          }
+        }
+        div:last-child {
+          margin-right: 0;
+        }
+      }
+      .checkboxBlock {
+        margin-bottom: .8rem;
+        font-size: .9rem;
+        font-weight: 700;
+      }
+    }
+    .tableComponent {
+      margin-left: @marginLeft;
+      margin-top: 1rem;
+      width: 84%;
+    }
+  }
+}
+
+.weldingParamsDetailsView {
+  margin-top: 48px;
+  .pageHeader {
+    border: 1px solid rgb(235, 237, 240);
+    width: calc(~'100% + 4px');
+    margin-left: -2px;
+  }
+  .weldingParamsDetailsViewContent {
+    margin-top: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    .titleBlock {
+      width: 92%;
+      height: 5rem;
+      background-color: #e4e4e4;
+      margin: 0 auto 1rem;
+      border-radius: 8px;
+      .firstTitleRow {
+        width: 96%;
+        margin: 0 auto;
+        height: 2.5rem;
+        span {
+          display: inline-block;
+          height: 2.5rem;
+          font-size: 1rem;
+          padding-top: .8rem;
+          font-weight: 700;
+          margin-right: 1.8rem;
+        }
+      }
+      .secondTitleRow {
+        width: 96%;
+        margin: 0 auto;
+        height: 2.5rem;
+        span {
+          display: inline-block;
+          padding-top: .2rem;
+          height: 2.5rem;
+          font-size: 1rem;
+          font-weight: 700;
+          margin-right: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+.loadingStyle {
+  text-align: center;
+  margin-top: 5rem;
+}
