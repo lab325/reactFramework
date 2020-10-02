@@ -1,6 +1,6 @@
 /*
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: 唐帆
  * @Date: 2020-04-30 10:01:35
  * @LastEditors: 唐帆
@@ -14,9 +14,8 @@ export default class Home extends Component {
     render() {
         return (
             getCookie("mspa_user") === null ?
-                // <Redirect to="/login"/>:
-                <Redirect to="/technology-system" /> :
-                <Redirect to="/technology-system" />
+                <Redirect to="/login" /> :
+                <Redirect to="/app" />
         )
     }
 }

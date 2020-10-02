@@ -70,7 +70,7 @@ class HeaderCustom extends Component{
           <img alt="大众" src={Volkswagen}/>
           <img alt="斯柯达" src={Skoda}/>
           <span>
-            <Link to="/technology-system">大众三厂工艺管理系统</Link>
+            <Link to="/technology-system">325 实验室基础前端框架</Link>
           </span>
           <span className="date-span">{this.state.date.toLocaleString()}</span>
           <div className={"user-icon-div"}>

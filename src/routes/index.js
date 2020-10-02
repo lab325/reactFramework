@@ -1,6 +1,6 @@
 /*
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: 唐帆
  * @Date: 2020-03-09 18:54:38
  * @LastEditors: 唐帆
@@ -22,7 +22,7 @@ class MRoute extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/technology-system" component={App} />
+          <Route path="/app" component={App} />
           <Route path="/login" component={Login} />
           <Route component={NoMatch} />
         </Switch>

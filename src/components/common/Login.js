@@ -53,7 +53,7 @@ class NormalLoginForm extends Component {
                     message.success('login successed!'); //成功信息
                     let that = this;
                     setTimeout(function() { //延迟进入
-                        that.props.history.push({pathname:'/technology-system',state:values});
+                        that.props.history.push({pathname:'/app',state:values});
                     }, 2000);
 
                 }else{
@@ -70,7 +70,7 @@ class NormalLoginForm extends Component {
             <div className="login">
                 <div className="login-form">
                     <div className="login-logo">
-                        <div className="login-name" style={{marginLeft:"30px"}}>众创课堂</div>
+                        <div className="login-name" style={{marginLeft:"30px"}}>325 实验室基础前端框架</div>
                     </div>
                     <Form onSubmit={this.handleSubmit} style={{maxWidth: '300px'}}>
                         <FormItem>

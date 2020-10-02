@@ -8,10 +8,8 @@
  */
 import { combineReducers } from 'redux-immutable';
 
-import {reducer as weldingViewsStore} from '../views/weldingViews/store'
 
 const reducer = combineReducers({
-  weldingViewsStore: weldingViewsStore
 });
 
 export default reducer;
