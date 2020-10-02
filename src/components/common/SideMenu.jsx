@@ -22,8 +22,6 @@ export default class SideMenu extends Component {
     return (
       <Menu
         mode="inline"
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
         style={{ height: 'calc(100% - 3rem)', marginTop: '3rem' }}
       >
         <SubMenu

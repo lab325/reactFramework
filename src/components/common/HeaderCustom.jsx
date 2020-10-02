@@ -9,6 +9,7 @@ import '../../style/header.less';
 import logo from '../../statistics/logo.png';
 import { nowTime } from '../../publicFunction/index';
 import { setCookie } from "../../helpers/cookies";
+import {color} from "echarts/src/export";
 
 const { Header } = Layout;
 
@@ -67,9 +68,9 @@ class HeaderCustom extends Component{
       return(
         <Header className="header-style header">
           <img alt="logo" src={logo}/>
-          <span>
-            <Link to="/technology-system">325 实验室基础前端框架</Link>
-          </span>
+          <Link to="/technology-system">
+            <span className={'header-span'}>325 实验室基础前端框架</span>
+          </Link>
           <span className="date-span">{this.state.date.toLocaleString()}</span>
           <div className={"user-icon-div"}>
             <Dropdown overlay={menu}>
