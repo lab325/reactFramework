@@ -19,7 +19,7 @@ $http.interceptors.request.use(function(config) {
 // 响应器
 $http.interceptors.response.use(function(response) {
     // 响应器你可以在这里进行数据进行响应之后处理的一些抒情
-    loadinger(false)
+    // loadinger(false)
     return response
 }, function(error) {
     // Do something with response error
@@ -43,13 +43,13 @@ class http {
     static async get(url, params, loading) {
         // loading为你要按需使用的loading的值如果为true就开启如果为false就不开启
         // 因为await使异步等待执行所以他会先执行loading函数
-        loading ? loadinger(loading) : loadinger(undefined)
+        // loading ? loadinger(loading) : loadinger(undefined)
         // return await $http.get(url,{params})
         return $http.get(url, { params })
     }
     // post
     static async post(url, params, loading) {
-        loadinger(loading)
+        // loadinger(loading)
         // return await $http.post(url,{params});
         return $http.post(url, { params })
     }
