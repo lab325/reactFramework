@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { Model } from '../../dataModule/testBone'
+// import { Model } from '../../dataModule/testBone'
 
 class Index extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
     }
   }
 
   render() {
     return (
-      <div style={{overflowX: 'auto', marginTop: 60}}>
+      <div style={{ overflowX: 'auto', marginTop: 60 }}>
       </div>
     )
   }
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(Index);
+export default connect(mapStateToProps, null)(Index)
