@@ -33,7 +33,6 @@ class App extends Component {
     if (getCookie('mspa_SiderCollapsed') === null) {
       setCookie('mspa_SiderCollapsed', false)
     }
-    store.dispatch(commonAction.dispatchRouters())
     commonAction.getAllBillTypes()
   }
 
@@ -46,8 +45,9 @@ class App extends Component {
     // } else {
     //   name = JSON.parse(getCookie('mspa_user')).username
     // }
-    let routers = store.getState().get('commonReducer').get('routers')
-    routers = flattenArrays(routers.toJS(), 'child')
+
+    let routers = store.getState().get('commonReducer').get('routers').toJS()
+    routers = flattenArrays(routers, 'child')
     const breadcrumbList = store.getState().get('commonReducer').get('breadcrumbList').toJS()
 
     return (
