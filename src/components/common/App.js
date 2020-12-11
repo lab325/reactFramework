@@ -61,7 +61,7 @@ class App extends Component {
               </Breadcrumb>
               <Content style={{ padding: '0 24px', minHeight: 'calc(100vh - 111px)' }}>
                 <Switch>
-                  <Route exact path={'/app'} component={Index} />
+                  <Route exact path={'/app'} component={ (props) => <Index { ...props }/> } />
                   <Route component={noMatch} />
                 </Switch>
               </Content>
