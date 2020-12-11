@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { originalUrl } from './UrlList'
-import form from "eslint-plugin-jsx-a11y/src/util/implicitRoles/form";
+// import form from 'eslint-plugin-jsx-a11y/src/util/implicitRoles/form';
 
 // 使用拦截器在发送请求前添加 token
 axios.interceptors.request.use(config => {
@@ -25,59 +25,59 @@ function fetch(me, params = null, methods = 'post', thenFun = null, catchFun = n
   }
   try {
     // 没有输入参数，直接退出
-    if (params === null) throw new Error( 'fetch 报错：没有输入参数')
+    if (params === null) throw new Error('fetch 报错：没有输入参数')
     if (methods === 'post' || methods === 'POST') {
       axios.post(me.url, params)
-        .then(function (response) {
+        .then(function(response) {
           if (thenFun === null) return
           thenFun(response, me)
         })
-        .catch(function (error) {
+        .catch(function(error) {
           if (catchFun === null) return
           catchFun(error)
-        });
+        })
     } else if (methods === 'get' || methods === 'GET') {
       // 添加随机数，避免浏览器误认为重复请求发送
-      const random = Math.random().toString();
+      const random = Math.random().toString()
       let urlString = ''
       // 将参数整理为 url 字符串
-      for (let i in params) {
+      for (const i in params) {
         urlString = urlString + `&${i}=${params[i]}`
       }
       // 发起 get 请求
       axios.get(me.url + `?random=${random}` + urlString)
-        .then(function (response) {
+        .then(function(response) {
           if (thenFun === null) return
           thenFun(response, me)
         })
-        .catch(function (error) {
+        .catch(function(error) {
           if (catchFun === null) return
           catchFun(error)
-        });
+        })
     } else if (methods === 'put' || methods === 'PUT') {
-      const formData = new FormData();
-      for (let i in params) {
+      const formData = new FormData()
+      for (const i in params) {
         formData.append(i, params[i])
       }
       axios.put(me.url, formData)
-        .then(function (response) {
+        .then(function(response) {
           if (thenFun === null) return
           thenFun(response, me)
         })
-        .catch(function (error) {
+        .catch(function(error) {
           if (catchFun === null) return
           catchFun(error)
-        });
+        })
     } else if (methods === 'delete' || methods === 'DELETE') {
       axios.delete(me.url, params)
-      .then(function (response) {
+      .then(function(response) {
         if (thenFun === null) return
         thenFun(response, me)
       })
-      .catch(function (error) {
+      .catch(function(error) {
         if (catchFun === null) return
         catchFun(error)
-      });
+      })
     } else throw new Error('fetch 报错：没有使用正确的请求方式')
   } catch (err) {
     console.error(err)
@@ -100,7 +100,7 @@ function toJSON(rawData) {
 
 function cloneMap(aimMap) {
   const result = new Map()
-  for (let [key, value] of aimMap) {
+  for (const [key, value] of aimMap) {
     result.set(key, value)
   }
   return result
@@ -133,14 +133,14 @@ class ModelMap {
 
   setJsonToMap(response, me) {
     const keys = Object.keys(response.data.result)
-    for (let i of keys) {
+    for (const i of keys) {
       me.modelMap.set(i, response.data.result[i])
     }
     return me.modelMap
   }
 }
 
-export class Model extends ModelMap{
+export class Model extends ModelMap {
   constructor(props) {
     super(props)
 		this.collection = null
@@ -166,7 +166,7 @@ export class Model extends ModelMap{
     fetch(this, params, methods, thenFun, catchFun, whetherTest)
 	}
 
-  save(params = null, url='', thenFun = null, catchFun = null) {
+  save(params = null, url = '', thenFun = null, catchFun = null) {
     this.fetch(params, url, 'post', thenFun, catchFun)
 	}
 
@@ -191,7 +191,7 @@ export class Model extends ModelMap{
     return cloneMap(this.modelMap)
 	}
 
-	isNew(){
+	isNew() {
 	}
 
 	hasChanged() {
@@ -212,7 +212,7 @@ class ModelArray {
   }
 }
 
-export class Collection extends ModelArray{
+export class Collection extends ModelArray {
   constructor(props) {
     super(props)
 		// this.model = Model
@@ -224,8 +224,8 @@ export class Collection extends ModelArray{
 	}
 
   clone() {
-    return this.modelArray.map(function (value, index) {
-  　　return value.clone(value.modelMap)
+    return this.modelArray.map(function(value, index) {
+      return value.clone(value.modelMap)
     })
   }
 
@@ -233,7 +233,7 @@ export class Collection extends ModelArray{
     for (let i = 0; i < items.length; i++) {
       const singleModel = new Model()
       const item = items[i]
-      for (let x in item) {
+      for (const x in item) {
         singleModel.set(x, item[x])
       }
       this.modelArray.push(singleModel)
@@ -255,8 +255,6 @@ export class Collection extends ModelArray{
     fetch(this, params, methods, thenFun, catchFun)
   }
 }
-
-
 
 // 测试
 // const bone = new Model()

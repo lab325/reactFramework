@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { originalUrl } from './UrlList'
-import {message} from "antd";
+import { message } from 'antd'
 
-export function uploadFile(me, url, params, thenFun=null, catchFun=null) {
+export function uploadFile(me, url, params, thenFun = null, catchFun = null) {
   const data = new FormData()
   const keys = Object.keys(params)
   let whetherContainedFile = false
