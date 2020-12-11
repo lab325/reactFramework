@@ -1,6 +1,6 @@
 # reactFramework
 ### 1 前端端口配置
-在根目录下的 package.json 文件中的 scripts 项进行配置，默认为 3008 端口；
+在根目录下的 package.json 文件中的 scripts 项进行配置，默认为 3000 端口；
 ### 2 其他页面编写位置
 在 src 文件夹下新建 views 文件夹，在该文件夹中进行编写；
 ### 3 通用组件
