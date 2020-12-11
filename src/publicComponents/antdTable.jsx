@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import {message, Pagination, Table} from 'antd';
-import {Model} from "../dataModule/testBone";
+import React, { Component } from 'react'
+import { message, Pagination, Table } from 'antd'
+import { Model } from '../dataModule/testBone'
 
 const model = new Model()
 
-export default class AntdTable extends Component{
+export default class AntdTable extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       pageSize: 15,
       columns: this.props.columns,
@@ -15,7 +15,7 @@ export default class AntdTable extends Component{
       total: 15,
       isLoading: true
     }
-    this.onClick = this.props.rowClick  ? this.props.rowClick : function () {
+    this.onClick = this.props.rowClick ? this.props.rowClick : function() {
       console.log('单击行事件')
     }
     this.interval = null
@@ -34,7 +34,7 @@ export default class AntdTable extends Component{
   setDataList = (params) => {
     console.log('params in AntdTable', params)
     const me = this
-    for (let i in params) {
+    for (const i in params) {
       if (params[i] === null) {
         params[i] = ''
       }
@@ -66,10 +66,11 @@ export default class AntdTable extends Component{
   }
 
   changeCurrentPageToOne = () => {
-    this.setState({currentPage: 1})
+    this.setState({ currentPage: 1 })
   }
 
   pageChange = (pageNumber) => {
+    // eslint-disable-next-line prefer-const
     let { currentPage, pageSize } = this.state
     const { queryParams } = this.props
     if (pageNumber !== undefined) currentPage = pageNumber
@@ -77,7 +78,7 @@ export default class AntdTable extends Component{
     const params = {
       pageSize: pageSize,
       ...queryParams,
-      currentPage: currentPage,
+      currentPage: currentPage
     }
     this.setDataList(params)
 
@@ -116,10 +117,10 @@ export default class AntdTable extends Component{
     if (this.props.currentPage !== undefined) {
       lastCurrentPage = this.props.currentPage
     }
-    let lastPageChange = this.pageChange
+    const lastPageChange = this.pageChange
     if (this.props.pageChange !== undefined) lastData = this.props.pageChange
     return (
-      <div style={{...this.props.style}}>
+      <div style={{ ...this.props.style }}>
         <Table
           style={{
             overflow: 'auto',
@@ -136,8 +137,8 @@ export default class AntdTable extends Component{
               onDoubleClick: event => {},
               onContextMenu: event => {},
               onMouseEnter: event => {}, // 鼠标移入行
-              onMouseLeave: event => {},
-            };
+              onMouseLeave: event => {}
+            }
           }}
           loading={isLoading}
           rowKey={'_id'}
@@ -148,7 +149,7 @@ export default class AntdTable extends Component{
           total={total}
           pageSize={queryParams.pageSize !== undefined ? queryParams.pageSize : pageSize}
           onChange={lastPageChange}
-          style={{marginTop: '1rem', marginBottom: '1rem'}}
+          style={{ marginTop: '1rem', marginBottom: '1rem' }}
         />
       </div>
     )

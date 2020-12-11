@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import {Icon} from "antd";
+import React, { Component } from 'react'
+import {Icon} from 'antd'
 
-import './style.less';
+import './style.less'
 
 export default class UploadFile extends Component {
   constructor(props) {
@@ -42,26 +42,26 @@ export default class UploadFile extends Component {
     return (
       <div className={`uploadReport ${this.props.className}`}>
         <input
-          type="text"
-          className="avatval"
-          id="avatval"
+          type='text'
+          className='avatval'
+          id='avatval'
           value={documentName}
-          placeholder={"请选择文件···"}
-          readOnly="readonly"
+          placeholder={'请选择文件···'}
+          readOnly='readonly'
           onClick={() => this.clickInput('#avatar')}
           onChange={null}
         />
         <input
-          type="file"
-          className="avatar"
-          name="avatar"
-          id="avatar"
+          type='file'
+          className='avatar'
+          name='avatar'
+          id='avatar'
           onChange={() => this.selectFile('#avatar')}
         />
         <Icon
-          type="close-circle"
-          theme="filled"
-          className={"closeIcon"}
+          type='close-circle'
+          theme='filled'
+          className={'closeIcon'}
           onClick={() => this.clearFile()}
         />
       </div>
