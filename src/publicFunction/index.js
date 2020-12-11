@@ -57,3 +57,16 @@ export function ejectMessage(text, type) {
     message.info(text)
   }
 }
+
+export function flattenArrays(rawArray, childItem) {
+  let newArray = []
+  for (const i of rawArray) {
+    newArray.push(i)
+    if (i[childItem].length !== 0) {
+      const children = flattenArrays(i[childItem], childItem)
+      newArray = newArray.concat(children)
+    }
+  }
+  return newArray
+}
+

@@ -7,8 +7,10 @@
  * @LastEditTime: 2020-05-05 14:46:48
  */
 import { combineReducers } from 'redux-immutable'
+import { reducer as commonReducer } from '../components/common/store'
 
 const reducer = combineReducers({
+  commonReducer
 })
 
 export default reducer
