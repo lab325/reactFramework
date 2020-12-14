@@ -11,23 +11,42 @@ const { SubMenu } = Menu
 
 class SideMenu extends Component {
   state = {
-    current: 'mail'
+    current: 'mail',
+    selectedKeys: [],
+    fatherKey: ''
   };
 
   componentDidMount() {
+    this.setSelectedKeys()
     this.getMenu()
   }
 
-  handleClick = (link, myTitle, fatherTitle = '') => {
+  setSelectedKeys = () => {
+    const { routers } = this.props
+    const locationUrl = window.location.pathname
+    let fatherKey = ''
+    for (const i of routers) {
+      if (i.key === locationUrl) {
+        break
+      } else if (i.child.length !== 0) {
+        for (const x of i.child) {
+          if (x.key === locationUrl) fatherKey = i.key
+          break
+        }
+      }
+      if (fatherKey !== '') break
+    }
+    this.setState({
+      selectedKeys: [locationUrl],
+      fatherKey
+    })
+  }
+
+  handleClick = (link) => {
     if (link.length !== 0) {
       history.push(link)
+      this.setSelectedKeys()
     }
-    const breadcrumbs = []
-    if (fatherTitle !== '') {
-      breadcrumbs.push(fatherTitle)
-    }
-    breadcrumbs.push(myTitle)
-    this.props.dispatchBreadcrumbList(breadcrumbs)
   }
 
   getMenu = () => {
@@ -36,13 +55,13 @@ class SideMenu extends Component {
     for (const i of routers) {
       if (i.child.length !== 0) {
         menu.push(
-          <SubMenu key={i.key} title={i.title}>
-            { i.child.map(item => <Menu.Item key={item.key} onClick={() => this.handleClick(item.link, item.title, i.title)}>{item.title}</Menu.Item>) }
+          <SubMenu key={i.key} title={i.title} onTitleClick={() => { this.setState({ fatherKey: i.key }) }}>
+            { i.child.map(item => <Menu.Item key={item.key} onClick={() => this.handleClick(item.link)}>{item.title}</Menu.Item>) }
           </SubMenu>
         )
       } else {
         menu.push(
-          <Menu.Item key={i.key} title={i.title} onClick={() => this.handleClick(i.link, i.title)}>{i.title}</Menu.Item>
+          <Menu.Item key={i.key} title={i.title} onClick={() => this.handleClick(i.link)}>{i.title}</Menu.Item>
         )
       }
     }
@@ -50,10 +69,13 @@ class SideMenu extends Component {
   };
 
   render() {
+    const { selectedKeys, fatherKey } = this.state
     return (
       <Menu
         mode='inline'
-        style={{ height: 'calc(100% - 3rem)', marginTop: '3rem' }}
+        style={{ height: 'calc(100vh - 3rem)', marginTop: '3rem', fontWeight: 1000, position: 'fixed', width: 200 }}
+        selectedKeys={selectedKeys}
+        openKeys={[fatherKey]}
       >
         { this.getMenu() }
       </Menu>

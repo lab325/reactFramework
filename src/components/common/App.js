@@ -5,7 +5,7 @@ import { getCookie, setCookie } from '../../helpers/cookies'
 import store from '../../store'
 import { Provider } from 'react-redux'
 import { actionCreators as commonAction } from './store'
-import { flattenArrays } from '../../publicFunction'
+import { flattenArrays, getBreadFromLocation } from '../../publicFunction'
 
 import SideMenu from './SideMenu'
 import HeaderCustom from './HeaderCustom'
@@ -38,7 +38,7 @@ class App extends Component {
 
   render() {
     const { collapsed } = this.state
-    // const {location} = this.props
+    const { location } = this.props
     let name
     // if (!getCookie('mspa_user') || getCookie('mspa_user') === 'undefined') {
     //   return <Redirect to='/login' />
@@ -48,7 +48,7 @@ class App extends Component {
 
     let routers = store.getState().get('commonReducer').get('routers').toJS()
     routers = flattenArrays(routers, 'child')
-    const breadcrumbList = store.getState().get('commonReducer').get('breadcrumbList').toJS()
+    const breadcrumbList = getBreadFromLocation(routers, location.pathname)
 
     return (
       <Layout>
@@ -64,7 +64,7 @@ class App extends Component {
               <Breadcrumb style={{ margin: '3.4rem 2rem 0' }}>
                 { breadcrumbList.map(item => <Breadcrumb.Item key={item}>{item}</Breadcrumb.Item>) }
               </Breadcrumb>
-              <Content style={{ padding: '0 24px', minHeight: 'calc(100vh - 111px)' }}>
+              <Content style={{ padding: '0 24px', minHeight: 'calc(100vh)' }}>
                 <Switch>
                   {/* <Route exact path={'/app'} component={ (props) => <Index { ...props }/> } /> */}
                   { routers.map(item => item.routerDom) }
@@ -74,7 +74,7 @@ class App extends Component {
             </Layout>
           </Content>
 
-          <Footer style={{ textAlign: 'center', backgroundColor: '#778899', color: 'white' }}>
+          <Footer style={{ textAlign: 'center', backgroundColor: '#778899', color: 'white', marginLeft: 200 }}>
             <span style={{ display: 'block' }}>公司地址：上海市杨浦区军工路516号上海理工大学</span>
             <span style={{ display: 'block' }}>联系电话：12345</span>
             <span style={{ display: 'block' }}>邮箱：12345@qq.com</span>

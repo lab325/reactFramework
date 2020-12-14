@@ -70,3 +70,15 @@ export function flattenArrays(rawArray, childItem) {
   return newArray
 }
 
+export function getBreadFromLocation(routers, location) {
+  for (const i of routers) {
+    if (i.link === location) {
+      return [i.title]
+    }
+    if (i.child.length !== 0) {
+      for (const x of i.child) {
+        return [i.title, x.title]
+      }
+    }
+  }
+}
