@@ -2,8 +2,7 @@ import { getCookie } from '../helpers/cookies'
 import createBrowserHistory from '../components/common/history'
 import { message } from 'antd'
 
-export function nowTime() {
-  const date = new Date()
+export function changeDateToString(date) {
   const seperator1 = '-'
   const seperator2 = ':'
   const month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
@@ -13,14 +12,15 @@ export function nowTime() {
   return date.getFullYear() + seperator1 + month + seperator1 + strDate + ' ' + strHours + seperator2 + strMinutes
 }
 
+export function nowTime() {
+  const date = new Date()
+  return changeDateToString(date)
+}
+
 export function nowTimeBigInt() {
   const date = new Date()
-  const month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
-  const strDate = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-  const strHours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
-  const strMinutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
   // eslint-disable-next-line radix
-  return parseInt(date.getFullYear() + month + strDate + strHours + strMinutes)
+  return parseInt(changeDateToString(date))
 }
 
 export function getUserName() {

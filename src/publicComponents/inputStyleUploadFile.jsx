@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Icon} from 'antd'
+import { Icon } from 'antd'
 
 import './style.less'
 
@@ -12,15 +12,19 @@ export default class UploadFile extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.onRef) this.props.onRef(this)
+  }
+
   clickInput = (id) => {
-    const documentInput = document.querySelector(id);
+    const documentInput = document.querySelector(id)
     documentInput.click()
   };
 
   selectFile = (id, whetherRecordTable, index) => {
-    const documentInput = document.querySelector(id);
-    if (documentInput.files[0] === undefined) return;
-    const uploadedDocument = documentInput.files[0];
+    const documentInput = document.querySelector(id)
+    if (documentInput.files[0] === undefined) return
+    const uploadedDocument = documentInput.files[0]
     this.setState({
       selectedDocument: uploadedDocument,
       documentName: documentInput.files[0].name
@@ -37,7 +41,7 @@ export default class UploadFile extends Component {
   };
 
   render() {
-    const { documentName } = this.state;
+    const { documentName } = this.state
 
     return (
       <div className={`uploadReport ${this.props.className}`}>
