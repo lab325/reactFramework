@@ -30,11 +30,12 @@ class SideMenu extends Component {
         break
       } else if (i.child.length !== 0) {
         for (const x of i.child) {
-          if (x.key === locationUrl) fatherKey = i.key
-          break
+          if (x.key === locationUrl) {
+            fatherKey = i.key
+            break
+          }
         }
       }
-      if (fatherKey !== '') break
     }
     this.setState({
       selectedKeys: [locationUrl],
@@ -73,7 +74,7 @@ class SideMenu extends Component {
     return (
       <Menu
         mode='inline'
-        style={{ height: 'calc(100vh - 3rem)', marginTop: '3rem', fontWeight: 1000, position: 'fixed', width: 200 }}
+        style={{ height: 'calc(100% - 3rem)', marginTop: '3rem', fontWeight: 1000, position: 'fixed', width: 200 }}
         selectedKeys={selectedKeys}
         openKeys={[fatherKey]}
       >

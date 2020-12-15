@@ -77,8 +77,19 @@ export function getBreadFromLocation(routers, location) {
     }
     if (i.child.length !== 0) {
       for (const x of i.child) {
-        return [i.title, x.title]
+        if (location === x.link) {
+          return [i.title, x.title]
+        }
       }
     }
+  }
+}
+
+export function formDate(dateForm) {
+  if (dateForm === '') {
+    return ''
+  } else {
+    const dateee = new Date(dateForm).toJSON()
+    return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
   }
 }
