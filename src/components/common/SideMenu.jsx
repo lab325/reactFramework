@@ -47,6 +47,7 @@ class SideMenu extends Component {
     if (link.length !== 0) {
       history.push(link)
       this.setSelectedKeys()
+      document.documentElement.scrollTop = 0
     }
   }
 
