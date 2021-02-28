@@ -61,10 +61,10 @@ class App extends Component {
               <Sider width={200} style={{ background: '#fff' }}>
                 <SideMenu />
               </Sider>
-              <Breadcrumb style={{ margin: '3.4rem 2rem 0' }}>
-                { breadcrumbList.map(item => <Breadcrumb.Item key={item}>{item}</Breadcrumb.Item>) }
-              </Breadcrumb>
               <Content style={{ padding: '0 24px', minHeight: 'calc(100vh)' }}>
+                <Breadcrumb style={{ margin: '4rem 0 0' }}>
+                  { breadcrumbList.map(item => <Breadcrumb.Item key={item}>{item}</Breadcrumb.Item>) }
+                </Breadcrumb>
                 <Switch>
                   {/* <Route exact path={'/app'} component={ (props) => <Index { ...props }/> } /> */}
                   { routers.map(item => item.routerDom) }
